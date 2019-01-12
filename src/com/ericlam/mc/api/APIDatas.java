@@ -18,6 +18,7 @@ class APIDatas {
     private int kills;
     private int deaths;
     private double kdr;
+    private long seconds;
     private Duration duration;
 
     APIDatas(UUID uuid, OfflinePlayer player, int fame, Rank rank, int kills, int deaths, long seconds){
@@ -28,6 +29,7 @@ class APIDatas {
         this.kills = kills;
         this.deaths = deaths;
         this.kdr = (double) this.kills / this.deaths;
+        this.seconds = seconds;
         this.duration = Duration.ofSeconds(seconds);
     }
 
@@ -41,6 +43,7 @@ class APIDatas {
         map.put("deaths",deaths);
         map.put("kdr",getKdr());
         map.put("duration",getDuration());
+        map.put("seconds", seconds);
         return new JSONObject(map);
     }
 

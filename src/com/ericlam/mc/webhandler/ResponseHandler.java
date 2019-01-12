@@ -23,6 +23,8 @@ public class ResponseHandler extends AbstractHandler {
     @Override
     public void handle(String s, Request baseRequest, HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("application/json; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET");
 
         response.setStatus(HttpServletResponse.SC_OK);
 
