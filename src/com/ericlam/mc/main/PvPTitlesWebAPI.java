@@ -17,7 +17,7 @@ public class PvPTitlesWebAPI extends JavaPlugin {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Server server = new Server(8080);
+                Server server = new Server(9090);
                 server.setHandler(new ResponseHandler());
                 try {
                     server.start();

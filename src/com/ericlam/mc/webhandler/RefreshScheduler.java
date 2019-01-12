@@ -42,12 +42,16 @@ class RefreshScheduler {
         return datalist;
     }
 
+    private boolean cooldown = false;
+
     synchronized boolean refreshData(){
         if (processing) return false;
+        if (cooldown) return true;
         try {
             processing = true;
             APIDataHandler dataHandler = new APIDataHandler();
             datalist = JSONArray.toJSONString(dataHandler.getAllDatas());
+            cooldown();
         } catch (DBException | RanksException e) {
             processing = false;
             e.printStackTrace();
@@ -55,5 +59,15 @@ class RefreshScheduler {
         }
         processing = false;
         return true;
+    }
+
+    private synchronized void cooldown() {
+        cooldown = true;
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                cooldown = false;
+            }
+        }.runTaskLater(PvPTitlesWebAPI.plugin, 120 * 20);
     }
 }
