@@ -53,8 +53,10 @@ public class Static {
             LinkedHashMap<String, Object> entries = new LinkedHashMap<>();
             String operator = entry.getSource().replaceAll("(?=\\[).*(?=])(])", "").replaceAll("§+[a-zA-Z0-9]", "");
             entries.put("create", new Date(entry.getCreated().getTime()).toLocalDate().toString());
+            entries.put("created_timestamp", entry.getCreated().getTime());
             entries.put("using_name", type == BanList.Type.NAME);
-            entries.put("expire", entry.getExpiration() == null ? "永久" : new Date(entry.getExpiration().getTime()).toLocalDate().toString());
+            entries.put("expire", entry.getExpiration() == null ? "永久封禁" : new Date(entry.getExpiration().getTime()).toLocalDate().toString());
+            entries.put("expire_timestamp", entry.getExpiration() == null ? Date.from(Instant.now()).getTime() * 2 : entry.getExpiration().getTime());
             entries.put("source", operator);
             entries.put("target", entry.getTarget());
             entries.put("reason", entry.getReason().replaceAll("§+[a-zA-Z0-9]", ""));
