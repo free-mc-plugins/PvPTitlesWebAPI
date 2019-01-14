@@ -13,11 +13,10 @@ public class PvPTitlesWebAPI extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         papiEnabled = this.getServer().getPluginManager().isPluginEnabled("PlaceHolderAPI");
-
         new BukkitRunnable() {
             @Override
             public void run() {
-                Server server = new Server(9090);
+                Server server = new Server(8080);
                 server.setHandler(new ResponseHandler());
                 try {
                     server.start();

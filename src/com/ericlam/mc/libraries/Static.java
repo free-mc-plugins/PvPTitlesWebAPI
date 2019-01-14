@@ -1,9 +1,6 @@
 package com.ericlam.mc.libraries;
 
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Statistic;
-
+import org.bukkit.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,6 +8,10 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.logging.Level;
 
 public class Static {
@@ -44,5 +45,21 @@ public class Static {
         }
         //Any statistic can be -1?
         return -1;
+    }
+
+    public static ArrayList<JSONObject> getBanObjects(BanList.Type type) {
+        ArrayList<JSONObject> jsonObjects = new ArrayList<>();
+        for (BanEntry entry : Bukkit.getBanList(type).getBanEntries()) {
+            LinkedHashMap<String, Object> entries = new LinkedHashMap<>();
+            entries.put("create", entry.getCreated());
+            entries.put("using_name", type == BanList.Type.NAME);
+            entries.put("expire", entry.getExpiration());
+            entries.put("source", entry.getSource());
+            entries.put("target", entry.getTarget());
+            entries.put("reason", entry.getReason());
+            entries.put("active", entry.getExpiration().before(Date.from(Instant.now())));
+            jsonObjects.add(new JSONObject(entries));
+        }
+        return jsonObjects;
     }
 }

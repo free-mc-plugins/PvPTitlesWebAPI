@@ -1,7 +1,10 @@
 package com.ericlam.mc.webhandler;
 
+import com.ericlam.mc.libraries.Static;
+import org.bukkit.BanList;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
@@ -31,6 +34,11 @@ public class ResponseHandler extends AbstractHandler {
         PrintWriter writer = response.getWriter();
 
         switch (s){
+            case "/banlist":
+                writer.println(JSONArray.toJSONString(Static.getBanObjects(BanList.Type.NAME)));
+                break;
+            case "/baniplist":
+                writer.println(JSONArray.toJSONString(Static.getBanObjects(BanList.Type.IP)));
             case "/refresh":
                 HashMap<String,Boolean> result = new HashMap<>();
                 result.put("success",refreshScheduler.refreshData());
