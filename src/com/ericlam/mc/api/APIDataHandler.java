@@ -32,7 +32,7 @@ public class APIDataHandler {
             int fameInt = fame.getFame();
             OfflinePlayer player = fame.getPlayer();
             UUID uuid = UUID.fromString(fame.getUUID());
-            long seconds = fame.getSeconds();
+            long seconds = PvPTitlesWebAPI.papiEnabled ? Integer.parseInt(PlaceholderAPI.setPlaceholders(player, "%statistic_seconds_played%")) : (int) (Static.getOfflinePlayerStatistic(player, Statistic.PLAY_ONE_TICK) / 20);
             Rank rank = RankManager.getRank(fameInt,seconds,player);
             int kills = PvPTitlesWebAPI.papiEnabled ? Integer.parseInt(PlaceholderAPI.setPlaceholders(player,"%statistic_player_kills%")) : (int)Static.getOfflinePlayerStatistic(player,Statistic.PLAYER_KILLS);
             int deaths = PvPTitlesWebAPI.papiEnabled ? Integer.parseInt(PlaceholderAPI.setPlaceholders(player,"%statistic_deaths%")) : (int)Static.getOfflinePlayerStatistic(player,Statistic.DEATHS);

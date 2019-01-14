@@ -1,7 +1,6 @@
 name: PVPTitles-WebAPI
 main: com.ericlam.mc.main.PvPTitlesWebAPI
-version: 1.0
+version: 3.0
 author: Hydranapse_
-loadbefore: [PlaceHolderAPI, PvpTitles]
 depend: [PvpTitles]
 softdepend: [PlaceHolderAPI]
