@@ -51,13 +51,14 @@ public class Static {
         ArrayList<JSONObject> jsonObjects = new ArrayList<>();
         for (BanEntry entry : Bukkit.getBanList(type).getBanEntries()) {
             LinkedHashMap<String, Object> entries = new LinkedHashMap<>();
-            entries.put("create", entry.getCreated());
+            String operator = entry.getSource().replaceAll("(?=\\[).*(?=])(])", "").replaceAll("§+[a-zA-Z0-9]", "");
+            entries.put("create", new Date(entry.getCreated().getTime()).toLocalDate().toString());
             entries.put("using_name", type == BanList.Type.NAME);
-            entries.put("expire", entry.getExpiration());
-            entries.put("source", entry.getSource());
+            entries.put("expire", entry.getExpiration() == null ? "永久" : new Date(entry.getExpiration().getTime()).toLocalDate().toString());
+            entries.put("source", operator);
             entries.put("target", entry.getTarget());
-            entries.put("reason", entry.getReason());
-            entries.put("active", entry.getExpiration().before(Date.from(Instant.now())));
+            entries.put("reason", entry.getReason().replaceAll("§+[a-zA-Z0-9]", ""));
+            entries.put("active", entry.getExpiration() == null || entry.getExpiration().before(Date.from(Instant.now())));
             jsonObjects.add(new JSONObject(entries));
         }
         return jsonObjects;

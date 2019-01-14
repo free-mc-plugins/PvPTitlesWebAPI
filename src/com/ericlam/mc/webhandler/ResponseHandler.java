@@ -39,6 +39,7 @@ public class ResponseHandler extends AbstractHandler {
                 break;
             case "/baniplist":
                 writer.println(JSONArray.toJSONString(Static.getBanObjects(BanList.Type.IP)));
+                break;
             case "/refresh":
                 HashMap<String,Boolean> result = new HashMap<>();
                 result.put("success",refreshScheduler.refreshData());
