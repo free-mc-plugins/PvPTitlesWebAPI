@@ -16,7 +16,7 @@ PvPTitles - WebAPI 插件
 1.13.2
 
 ## 路徑
-- /refresh - 刷新插件
+- /refresh - 刷新並重新獲取排行數據
 - /list - 獲取排行數據
 - /banlist - 獲取Bukkit封禁數據
 - /baniplist - 獲取Bukkit IP封禁數據
