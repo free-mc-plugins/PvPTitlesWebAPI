@@ -12,13 +12,16 @@ public class PvPTitlesWebAPI extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        saveDefaultConfig();
+        reloadConfig();
+        int port = getConfig().getInt("port");
         papiEnabled = this.getServer().getPluginManager().isPluginEnabled("PlaceHolderAPI");
         this.getLogger().info("PVPTitles - Web API 插件已啟用");
-        this.getLogger().info("將開啟port 9090 作為 HTTP API 伺服器");
+        this.getLogger().info("將開啟port " + port + " 作為 HTTP API 伺服器");
         new BukkitRunnable() {
             @Override
             public void run() {
-                Server server = new Server(9090);
+                Server server = new Server(port);
                 server.setHandler(new ResponseHandler());
                 try {
                     server.start();
