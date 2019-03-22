@@ -22,7 +22,7 @@ PvPTitles - WebAPI 插件
 - /baniplist - 獲取Bukkit IP封禁數據
 
 ## 下載
-[下載](http://corneey.com/wNwJOp)
+[下載](http://corneey.com/wNwJOp) | [Mirror](http://www.mediafire.com/file/ys32y242bfc8yw1/PvPTitlesWebAPI.jar/file)
 
 ## 演示
 配合網站使用
