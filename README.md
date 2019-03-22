@@ -12,6 +12,9 @@ PvPTitles - WebAPI 插件
 - 自定義 Web API 端口
 - 可獲取Bukkit的封禁數據
 
+## 前置插件
+PvpTitles, PlaceHolderAPI(可選)
+
 ## 版本
 任何，但視乎PvPTitles獲取排行數據的方法有沒有被更改。
 目前已測試的版本: 1.12.2 ~ 1.13.2
