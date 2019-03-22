@@ -13,7 +13,8 @@ PvPTitles - WebAPI 插件
 - 可獲取Bukkit的封禁數據
 
 ## 版本
-任何，視乎你的PvPTitle版本
+任何，但視乎PvPTitles獲取排行數據的方法有沒有更新。
+目前已測試的版本: 1.12.2 ~ 1.13.2
 
 ## 路徑
 - /refresh - 刷新並重新獲取排行數據
