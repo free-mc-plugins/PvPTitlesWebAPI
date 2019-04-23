@@ -26,7 +26,7 @@ PvpTitles, PlaceHolderAPI(可選)
 - /baniplist - 獲取Bukkit IP封禁數據
 
 ## 下載
-[下載](http://corneey.com/wNwJOp) | [Mirror](http://www.mediafire.com/file/ys32y242bfc8yw1/PvPTitlesWebAPI.jar/file)
+[下載插件](http://corneey.com/wMiYVj) | [Mirror](https://drive.google.com/open?id=1oNFsjsq_0AcOD1CcXqjL6js5gPa5CtZK)
 
 ## 演示
 配合網站使用
